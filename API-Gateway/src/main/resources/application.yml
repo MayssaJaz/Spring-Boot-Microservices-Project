@@ -1,0 +1,14 @@
+server:
+  port: 8070
+spring:
+  cloud: 
+   gateway: 
+    routes:
+      - id: write_model
+        uri: 'http://localhost:8090'
+        predicates:
+          - Path=/books/**
+      - id: read_model
+        uri: 'http://localhost:8080'
+        predicates:
+          - Path=/books/**
